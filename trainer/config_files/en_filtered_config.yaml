@@ -1,14 +1,14 @@
-number: '٠١٢٣٤٥٦٧٨٩'
+number: ''
 symbol: ''
 lang_char: '٠١٢٣٤٥٦٧٨٩'
 experiment_name: 'en_filtered'
 train_data: 'all_data/training_data'
-valid_data: 'all_data/training_data'
+valid_data: 'all_data/validation'
 manualSeed: 1111
 workers: 6
 batch_size: 32 #32
-num_iter: 70
-valInterval: 10
+num_iter: 50000
+valInterval: 5000
 saved_model: '' #'saved_models/en_filtered/iter_300000.pth'
 FT: True
 optim: adam # default is Adadelta
