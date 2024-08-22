@@ -18,7 +18,7 @@ from nltk.metrics.distance import edit_distance
 from utils import CTCLabelConverter, AttnLabelConverter, Averager
 from dataset import hierarchical_dataset, AlignCollate, Batch_Balanced_Dataset
 from model import Model
-device = torch.device('cuda')
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 
 
@@ -136,9 +136,7 @@ def count_parameters(model):
     print(f"Total Trainable Params: {total_params}")
     return total_params
 
-def train(opt,device, show_number = 2, amp=False):
-    device = torch.device('cuda')
-    print("Devicdfdfdfsdfsde is,",device)
+def train(opt, show_number = 2, amp=False):
     """ dataset preparation """
     if not opt.data_filtering_off:
         print('Filtering the images containing characters which are not in opt.character')
@@ -180,8 +178,7 @@ def train(opt,device, show_number = 2, amp=False):
         if opt.new_prediction:
             model.Prediction = nn.Linear(model.SequenceModeling_output, len(pretrained_dict['module.Prediction.weight']))  
         
-        model = torch.nn.DataParallel(model).to(device)
-        print("Device is,",device)
+        model = torch.nn.DataParallel(model).to(device) 
         print(f'loading pretrained model from {opt.saved_model}')
         if opt.FT:
             model.load_state_dict(pretrained_dict, strict=False)
