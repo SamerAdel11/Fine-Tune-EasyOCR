@@ -2,7 +2,7 @@ number: ''
 symbol: ''
 lang_char: '٠١٢٣٤٥٦٧٨٩'
 experiment_name: 'en_filtered'
-train_data: 'all_data/training_data'
+train_data: 'all_data/1000_images_custom_probabilities'
 valid_data: 'all_data/validation_data'
 manualSeed: 1111
 workers: 6
