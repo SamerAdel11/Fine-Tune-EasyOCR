@@ -388,5 +388,5 @@ def train(opt,device, show_number = 2, amp=False):
 
         if i == opt.num_iter:
             print('end the training')
-            sys.exit()
+            break
         i += 1
